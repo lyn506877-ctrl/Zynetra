@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b13">
+<title>Zynetra: Signal Pulse | Player Privacy Codex</title>
+<style>
+:root{
+  --bg:#080b13;--panel:#111722;--panel2:#171f2e;--line:#354153;--text:#e8edf5;
+  --muted:#9ba9bc;--cyan:#4df6e3;--lime:#c8ff5e;--pink:#ff4fa3;--gold:#ffc66d;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(#4df6e311 1px,transparent 1px),linear-gradient(90deg,#4df6e311 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(#000,transparent 90%)}
+a{color:var(--cyan);text-decoration:none}a:hover{color:var(--lime)}
+button{font:inherit;cursor:pointer}
+.shell{width:min(1180px,calc(100% - 32px));margin:auto}
+header{border-bottom:1px solid #4df6e32a;background:linear-gradient(110deg,#101d27f2,#0a0e17f5 60%,#211126e8);position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:440px;height:440px;border:1px solid #4df6e31e;border-radius:50%;right:-110px;top:-250px;box-shadow:0 0 0 35px #4df6e308,0 0 0 70px #4df6e305;pointer-events:none}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.15em}
+.emblem{width:48px;height:48px;display:grid;place-items:center;color:var(--lime);font-size:28px;border:2px solid var(--lime);transform:rotate(45deg);box-shadow:0 0 18px #c8ff5e25}
+.emblem span{transform:rotate(-45deg)}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.28em}
+.status{font:800 11px/1.4 ui-monospace,monospace;color:var(--lime);border:1px solid #c8ff5e55;padding:8px 11px;letter-spacing:.13em;background:#c8ff5e0a}
+.hero{padding:46px 0 54px;position:relative;z-index:1}
+.kicker{font:800 12px/1.4 ui-monospace,monospace;letter-spacing:.24em;color:var(--cyan);text-transform:uppercase}
+h1{font-size:clamp(2.8rem,8vw,6.5rem);line-height:.93;letter-spacing:-.07em;margin:18px 0;max-width:900px;text-transform:uppercase}
+h1 .accent{color:var(--lime);text-shadow:4px 4px 0 #ff4fa31a}
+.hero p{max-width:670px;color:#bdc8d7;font-size:1.08rem}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 16px;border:1px solid var(--cyan);color:var(--bg);background:var(--cyan);font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.08em;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.btn.secondary{background:transparent;color:var(--cyan)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;max-width:760px}
+.metric{border-top:2px solid var(--line);padding:12px 14px;background:#ffffff05}
+.metric strong{display:block;font:900 clamp(1.1rem,3vw,1.7rem)/1.3 ui-monospace,monospace;color:var(--lime)}
+.metric span{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+main{padding:28px 0 64px}
+.content-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;align-items:start}
+.panel{background:linear-gradient(145deg,#141c29f5,#0e131df5);border:1px solid var(--line);box-shadow:8px 8px 0 #0003}
+nav{position:sticky;top:16px;padding:18px}
+.nav-head{display:flex;justify-content:space-between;align-items:center;color:var(--lime);font:800 12px ui-monospace,monospace;letter-spacing:.13em;margin-bottom:12px}
+nav a{display:flex;gap:10px;align-items:center;color:var(--muted);padding:9px 8px;margin:3px 0;border-left:2px solid transparent;font-size:13px}
+nav a .n{color:#68768a;font:800 11px ui-monospace,monospace}
+nav a:hover,nav a.active{color:var(--cyan);background:#4df6e30b;border-left-color:var(--cyan)}
+nav a.active .n{color:var(--lime)}
+.quest-note{border-top:1px solid var(--line);margin-top:16px;padding-top:14px;color:var(--muted);font-size:12px}
+.quest-note b{color:var(--pink)}
+article{min-width:0}
+.section{padding:24px;margin-bottom:14px;scroll-margin-top:18px;position:relative}
+.section:before{content:"";position:absolute;top:-1px;left:-1px;width:46px;height:3px;background:var(--cyan)}
+.section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+.section-num{flex:none;width:42px;height:42px;display:grid;place-items:center;background:#c8ff5e12;border:1px solid #c8ff5e6b;color:var(--lime);font:900 13px ui-monospace,monospace}
+h2{font-size:clamp(1.15rem,3vw,1.5rem);line-height:1.25;margin:0;text-transform:uppercase;letter-spacing:.015em}
+.tag{display:inline-block;color:var(--cyan);font:800 10px ui-monospace,monospace;letter-spacing:.14em;margin-top:5px}
+p{color:#bec8d7;margin:12px 0}
+ul{padding-left:22px;color:#bec8d7}li{margin:7px 0;padding-left:3px}li::marker{color:var(--lime)}
+.callout{margin:16px 0;padding:14px 16px;border-left:3px solid var(--pink);background:#ff4fa30b;color:#cbd4e1}
+.callout strong{color:#fff}
+.email{display:inline-flex;align-items:center;gap:8px;border:1px solid #4df6e35c;background:#4df6e30b;padding:10px 13px;font-weight:800;overflow-wrap:anywhere}
+.footerbar{border-top:1px solid var(--line);padding:24px 0 36px;color:var(--muted);font:11px/1.7 ui-monospace,monospace;letter-spacing:.06em}
+.footer-inner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.scanline{height:2px;background:linear-gradient(90deg,var(--cyan),var(--pink),transparent);opacity:.7}
+@media(max-width:800px){.content-grid{grid-template-columns:1fr}nav{position:static}.navlinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}.quest-note{display:none}.hero{padding:32px 0 38px}.section{padding:19px}.metrics{gap:7px}.metric{padding:10px}}
+@media(max-width:430px){.shell{width:calc(100% - 22px)}.status{font-size:9px}.brand{font-size:12px}.metrics{grid-template-columns:1fr}.navlinks{grid-template-columns:1fr 1fr}.section-head{gap:10px}.section-num{width:36px;height:36px}}
+@media(prefers-reduced-motion:no-preference){.emblem{animation:rotate 18s linear infinite}@keyframes rotate{to{transform:rotate(405deg)}}}
+@media print{body{background:#fff;color:#111}body:before,header:after,.hero-actions,nav,.status{display:none!important}header{background:#fff;color:#111;border:0}.hero p,p,li,.footerbar{color:#333}.panel{background:#fff;box-shadow:none;border-color:#bbb}.section{break-inside:avoid}h1 .accent{color:#111}}
+</style>
+</head>
+<body>
+<header>
+  <div class="shell">
+    <div class="top">
+      <div class="brand"><div class="emblem"><span>ϟ</span></div><div>ZYNETRA<small>SIGNAL PULSE // PLAYER SERVICES</small></div></div>
+      <div class="status">● SYSTEM ONLINE</div>
+    </div>
+    <div class="hero">
+      <div class="kicker">PLAYER CODEX / FILE 001 / LEGAL QUEST</div>
+      <h1>PLAYER<br><span class="accent">PRIVACY</span><br>CODEX</h1>
+      <p>Every player has a right to understand how their information is handled. Review the privacy rules for <strong>Zynetra: Signal Pulse</strong>, including data collection, retention, third-party services, and your privacy choices.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#collection">▶ Start Reading</a>
+        <button class="btn secondary" onclick="window.print()">⇩ Print / Save PDF</button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>16+</strong><span>Intended minimum age</span></div>
+        <div class="metric"><strong>24 MO</strong><span>Automatic data retention · up to</span></div>
+        <div class="metric"><strong>12 MO</strong><span>User-provided data · after use</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scanline"></div>
+</header>
+
+<main class="shell">
+  <div class="content-grid">
+    <nav class="panel" aria-label="Privacy policy contents">
+      <div class="nav-head"><span>QUEST LOG</span><span>10 FILES</span></div>
+      <div class="navlinks">
+        <a href="#collection"><span class="n">01</span> Data Collection</a>
+        <a href="#tracking"><span class="n">02</span> Tracking Tech</a>
+        <a href="#rights"><span class="n">03</span> Your Rights</a>
+        <a href="#third-party"><span class="n">04</span> Third Parties</a>
+        <a href="#transfers"><span class="n">05</span> Data Transfers</a>
+        <a href="#optout"><span class="n">06</span> Opt-Out</a>
+        <a href="#retention"><span class="n">07</span> Data Retention</a>
+        <a href="#children"><span class="n">08</span> Children</a>
+        <a href="#security"><span class="n">09</span> Security</a>
+        <a href="#consent"><span class="n">10</span> Consent & Contact</a>
+      </div>
+      <div class="quest-note"><b>MISSION NOTE</b><br>Read each file to understand the rules, then contact the Service Provider if you need to exercise a privacy right.</div>
+    </nav>
+
+    <article>
+      <section class="section panel" id="collection">
+        <div class="section-head"><div class="section-num">01</div><div><h2>Information Collection and Use</h2><div class="tag">DATA INTEL // COLLECTION</div></div></div>
+        <p>The Application collects information when you download and use it. This information may include:</p>
+        <ul><li>Your device's Internet Protocol (IP) address.</li><li>The pages of the Application you visit, the date and time of your visit, and the time spent on those pages.</li><li>The time spent using the Application.</li><li>The mobile operating system you use.</li></ul>
+        <p>For a better experience, the Service Provider may require you to provide certain personally identifiable information. The information requested will be retained and used as described in this privacy policy.</p>
+      </section>
+
+      <section class="section panel" id="tracking">
+        <div class="section-head"><div class="section-num">02</div><div><h2>Cookies and Tracking Technologies</h2><div class="tag">PASSIVE SIGNALS // SDK</div></div></div>
+        <p>The Application or its third-party SDKs may use cookies, SDKs, pixels, and similar technologies to support functionality, analytics, or service delivery. Where required by applicable law, the Service Provider will obtain consent before using non-essential tracking technologies.</p>
+      </section>
+
+      <section class="section panel" id="rights">
+        <div class="section-head"><div class="section-num">03</div><div><h2>Your Rights</h2><div class="tag">PLAYER CONTROL // REQUEST ACCESS</div></div></div>
+        <p>You may request access to, correction of, or deletion of your personal data held by the Service Provider. You may also withdraw consent where processing is based on consent.</p>
+        <div class="callout"><strong>California privacy rights (CCPA/CPRA):</strong> California residents have the right to know what personal information is collected, request deletion, opt out of the sale or sharing of personal information, and not be discriminated against for exercising these rights.</div>
+        <p>The Service Provider may use information you provide to send important information, required notices, and marketing communications where permitted by law.</p>
+        <a class="email" href="mailto:lyn506877@gmail.com">✉ CONTACT: lyn506877@gmail.com</a>
+      </section>
+
+      <section class="section panel" id="third-party">
+        <div class="section-head"><div class="section-num">04</div><div><h2>Third-Party Access</h2><div class="tag">EXTERNAL SERVICES // DATA SHARING</div></div></div>
+        <p>Only aggregated, anonymized data is periodically transmitted to external services to help the Service Provider improve the Application and its services. The Service Provider may share information as described in this privacy statement.</p>
+        <ul><li>As required by law, such as to comply with a subpoena or similar legal process.</li><li>When disclosure is believed in good faith to be necessary to protect rights or safety, investigate fraud, or respond to a government request.</li><li>With trusted service providers working on its behalf, who have agreed to follow this privacy statement and do not independently use the disclosed information.</li></ul>
+        <p>The third-party service named in the source policy is <strong>Google Play Services</strong>, which has its own privacy policy.</p>
+      </section>
+
+      <section class="section panel" id="transfers">
+        <div class="section-head"><div class="section-num">05</div><div><h2>International Data Transfers</h2><div class="tag">CROSS-REGION TRANSIT</div></div></div>
+        <p>The Service Provider or its third-party service providers may transfer personal data to countries outside your country of residence, including outside the European Economic Area (EEA). Where required by law, appropriate safeguards may include:</p>
+        <ul><li>Standard Contractual Clauses (SCCs) approved by the European Commission.</li><li>Adequacy decisions or other legally recognized transfer mechanisms.</li><li>Your consent, where required and legally permitted.</li></ul>
+        <p>Data protection laws in other countries may differ from those in your jurisdiction. Appropriate safeguards and required consent will be applied where applicable.</p>
+      </section>
+
+      <section class="section panel" id="optout">
+        <div class="section-head"><div class="section-num">06</div><div><h2>Opt-Out Rights</h2><div class="tag">EXIT OPTION // STOP FUTURE COLLECTION</div></div></div>
+        <p>You can stop further collection of information from your mobile device by uninstalling the Application. Uninstalling will stop the Application from collecting data from your device, but it does not automatically delete information already transmitted to the Service Provider or third parties.</p>
+        <p>To request deletion of your personal data, withdraw consent, or exercise your rights, contact the Service Provider.</p>
+        <a class="email" href="mailto:lyn506877@gmail.com?subject=Privacy%20Request">✉ SUBMIT PRIVACY REQUEST</a>
+      </section>
+
+      <section class="section panel" id="retention">
+        <div class="section-head"><div class="section-num">07</div><div><h2>Data Retention Policy</h2><div class="tag">ARCHIVE LIMITS // STORAGE</div></div></div>
+        <p>The Service Provider retains personal data based on its necessity for the stated purposes:</p>
+        <ul><li><strong>User-provided data:</strong> for the duration of your use of the Application plus 12 months, unless longer retention is required by law.</li><li><strong>Automatically collected data:</strong> for up to 24 months from collection, unless longer retention is required for legal compliance.</li><li><strong>Aggregated and anonymized data:</strong> indefinitely, as it no longer identifies you.</li><li><strong>Data required for legal compliance:</strong> for as long as applicable law requires.</li></ul>
+        <p>You may request deletion of your personal data, subject to any legal obligation to retain it. Some user-provided data may be required for the Application to function properly.</p>
+      </section>
+
+      <section class="section panel" id="children">
+        <div class="section-head"><div class="section-num">08</div><div><h2>Children</h2><div class="tag">AGE GATE // UNDER 16</div></div></div>
+        <p>The Application is not intended for children under 16 years of age, or such higher age as required by applicable law. The Service Provider does not knowingly solicit data from children or market the Application to them.</p>
+        <p>Where parental or guardian consent is required by law, the Application is not intended for use without that consent. If the Service Provider discovers that a child has provided personal information in violation of applicable law, it will delete the information from its servers. Parents or guardians may contact the Service Provider to request action.</p>
+      </section>
+
+      <section class="section panel" id="security">
+        <div class="section-head"><div class="section-num">09</div><div><h2>Security and Data Breach Notification</h2><div class="tag">DEFENSE SYSTEMS // INCIDENT RESPONSE</div></div></div>
+        <p>The Service Provider provides physical, electronic, and procedural safeguards to protect the confidentiality of information it processes and maintains.</p>
+        <p>If a data breach affects your personal data, the Service Provider will notify you in accordance with applicable legal requirements, including information about the nature of the breach and steps being taken to address it where required.</p>
+      </section>
+
+      <section class="section panel" id="consent">
+        <div class="section-head"><div class="section-num">10</div><div><h2>Consent, Changes, and Contact</h2><div class="tag">FINAL QUEST // SUPPORT CHANNEL</div></div></div>
+        <p>Where processing is based on consent, you provide consent by affirmatively opting in to the relevant feature or action. You may withdraw consent at any time without affecting processing carried out before withdrawal. Processing based on other lawful bases is carried out as described in this policy.</p>
+        <p>The Service Provider may update this Privacy Policy from time to time. Material changes will be announced by posting the updated policy with an effective date. Where required by law, consent will be sought before material changes take effect. Previous versions are available upon request by email.</p>
+        <div class="callout"><strong>Service Provider:</strong> LynxesBlushed<br><strong>Effective date:</strong> October 9, 2026</div>
+        <p>For questions about privacy while using Zynetra: Signal Pulse, contact the Service Provider:</p>
+        <a class="email" href="mailto:lyn506877@gmail.com?subject=Privacy%20Policy%20Inquiry">✉ lyn506877@gmail.com</a>
+        <div class="hero-actions"><button class="btn" onclick="window.print()">⇩ Print / Save PDF</button><button class="btn secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to Top</button></div>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="footerbar"><div class="shell footer-inner"><span>LYNXESBLUSHED // ZYNETRA: SIGNAL PULSE</span><span>PLAYER PRIVACY CODEX · EFFECTIVE 2026-10-09</span></div></footer>
+<script>
+const links=[...document.querySelectorAll('nav a')];
+const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){const i=sections.indexOf(entry.target);links.forEach((a,j)=>a.classList.toggle('active',i===j));}
+}),{rootMargin:'-15% 0px -70% 0px'});
+sections.forEach(s=>s&&observer.observe(s));
+</script>
+</body>
+</html>
